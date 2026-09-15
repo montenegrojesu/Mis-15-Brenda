@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Quince Años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =================================================================
+     PANTALLA DE BIENVENIDA
+     ================================================================= -->
+<div id="welcome">
+  <div class="welcome-frame">
+    <div class="welcome-eyebrow">Tengo el honor de invitarte a</div>
+    <div class="welcome-name" id="welcomeName">Mis Quince Años</div>
+    <div class="welcome-sub" id="welcomeDate">—</div>
+    <button id="openBtn">Tocá para abrir</button>
+  </div>
+</div>
+
+<div id="petals" aria-hidden="true"></div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-kicker">Mis quince años</div>
+    <h1 class="hero-name" id="heroName">Nombre</h1>
+    <div class="hero-age">Quiero compartir este día tan especial con vos</div>
+    <div class="hero-date" id="heroDate">—</div>
+    <div class="scroll-cue"></div>
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section id="countdown-section">
+    <h2>Falta muy poco</h2>
+    <div class="divider"></div>
+    <div class="countdown" id="countdown">
+      <div class="unit"><div class="num" id="cd-dias">00</div><div class="lbl">días</div></div>
+      <div class="unit"><div class="num" id="cd-horas">00</div><div class="lbl">horas</div></div>
+      <div class="unit"><div class="num" id="cd-min">00</div><div class="lbl">min</div></div>
+      <div class="unit"><div class="num" id="cd-seg">00</div><div class="lbl">seg</div></div>
+    </div>
+  </section>
+
+  <!-- DETALLES -->
+  <section id="details">
+    <h2>Detalles del evento</h2>
+    <div class="divider"></div>
+
+    <div class="detail-card">
+      <div class="detail-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+      </div>
+      <div>
+        <div class="detail-title">Fecha</div>
+        <div class="detail-text" id="detailFecha">—</div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      </div>
+      <div>
+        <div class="detail-title">Hora</div>
+        <div class="detail-text" id="detailHora">—</div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+      </div>
+      <div>
+        <div class="detail-title">Ubicación</div>
+        <div class="detail-text" id="detailLugar">—</div>
+        <a class="map-btn" id="mapsLink" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+        <div class="map-embed">
+          <iframe id="mapEmbed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src=""></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGALO -->
+  <section id="gift">
+    <h2>¿Querés hacerme un regalo?</h2>
+    <p class="section-lead">Tu presencia es el mejor regalo, pero si querés hacerme un detalle, podés hacerlo a este alias.</p>
+    <div class="gift-box">
+      <div class="detail-title" style="margin-bottom:0.2rem;">Alias</div>
+      <div class="gift-alias" id="giftAlias">noahysanti.mp</div>
+      <button id="copyBtn">Copiar alias</button>
+      <span id="copyMsg"></span>
+    </div>
+  </section>
+
+    <!-- CONFIRMACIÓN -->
+  <section id="rsvp">
+    <h2>Confirmá tu asistencia</h2>
+    <p class="section-lead">Contame si vas a poder venir, así te reservo tu lugar en la mesa. Podés confirmar con quien te resulte más fácil.</p>
+    <div class="rsvp-buttons">
+      <button class="rsvp-btn confirm" id="rsvpUno">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="rsvpUnoLabel">Confirmar con Mamá</span>
+      </button>
+      <button class="rsvp-btn confirm" id="rsvpDos">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="rsvpDosLabel">Confirmar con Papá</span>
+      </button>
+    </div>
+  </section>
+  
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fname" id="footerName">Nombre</div>
+    <div class="fmsg">¡Te espero para festejar juntos!</div>
+  </footer>
+
+</main>
+
+<!-- Botón flotante de música -->
+<button id="musicToggle" aria-label="Reproducir música" aria-pressed="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <line class="bar" x1="7" y1="16" x2="7" y2="10"/>
+    <line class="bar" x1="12" y1="16" x2="12" y2="6"/>
+    <line class="bar" x1="17" y1="16" x2="17" y2="12"/>
+  </svg>
+</button>
+
+<audio id="bgMusic" loop preload="none">
+  <!-- Reemplazá el src de abajo por el link de tu canción (mp3) -->
+  <source id="bgMusicSource" src="img/Saxofonista para 15 años 🎷.mp3" type="audio/mpeg">
+</audio>
+
+
+<script src="script.js"></script>
+</body>
+</html>
