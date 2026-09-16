@@ -208,7 +208,7 @@ const CONFIG = {
 
   // --- Pétalos cayendo ---
   const petalsContainer = document.getElementById('petals');
-  const petalChars = ['❀','✿','❁'];
+  const petalChars = ['🦋'];
   let petalsStarted = false;
 
   function startPetals(){
