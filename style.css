@@ -1,16 +1,16 @@
 /* ============================================================
      CONFIGURACIÓN VISUAL — variables de color y tipografía
      ============================================================ */
-  :root{
-    --bg-deep:      #200912;
-    --bg-deeper:    #150710;
-    --gold:         #c8a15c;
-    --gold-light:   #e6cd97;
-    --blush:        #d98c97;
-    --cream:        #f4ead6;
-    --cream-muted:  #c9b6a0;
-    --line:         rgba(200,161,92,0.35);
-    --shadow:       rgba(0,0,0,0.45);
+    :root{
+    --bg-deep:      #d8f1bc;   /* fondo principal, verde salvia claro */
+    --bg-deeper:    #c4dda6;   /* fondo pantalla de bienvenida, un toque más verde */
+    --gold:         #c9a227;   /* dorado para bordes e íconos */
+    --gold-light:   #a3781a;   /* dorado más oscuro, usado en textos/títulos */
+    --blush:        #3f7d5c;   /* verde para acentos secundarios */
+    --cream:        #2c3b2f;   /* texto principal, verde muy oscuro */
+    --cream-muted:  #5f6f5f;   /* texto secundario, gris verdoso */
+    --line:         rgba(63,125,92,0.35);
+    --shadow:       rgba(0,0,0,0.12);
 
     --font-display: 'Playfair Display', serif;
     --font-body:    'Jost', sans-serif;
@@ -115,6 +115,50 @@
     transition:background 0.35s ease, color 0.35s ease;
   }
   #openBtn:hover{ background:var(--gold); color:var(--bg-deeper); }
+
+  /* ============================================================
+   MARCO DE HOJAS EN LOS BORDES DE LA PANTALLA
+   ============================================================ */
+#leafBorder{
+  position:fixed;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+}
+
+.leaf-corner{
+  position:absolute;
+  font-size:2.6rem;
+  line-height:1;
+  opacity:0.85;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.leaf-corner.top-left{ top:-0.5rem; left:-0.5rem; transform:rotate(-15deg); }
+.leaf-corner.top-right{ top:-0.5rem; right:-0.5rem; transform:rotate(15deg) scaleX(-1); }
+.leaf-corner.bottom-left{ bottom:-0.5rem; left:-0.5rem; transform:rotate(15deg) scaleY(-1); }
+.leaf-corner.bottom-right{ bottom:-0.5rem; right:-0.5rem; transform:rotate(195deg); }
+
+.leaf-side{
+  position:absolute;
+  top:2.5rem;
+  bottom:2.5rem;
+  width:26px;
+  writing-mode:vertical-rl;
+  font-size:1.3rem;
+  line-height:1;
+  letter-spacing:0.55rem;
+  opacity:0.55;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.leaf-side.left{ left:0.2rem; }
+.leaf-side.right{ right:0.2rem; transform:scaleX(-1); }
+
+/* En pantallas angostas, los costados se achican para no tapar texto */
+@media (max-width:420px){
+  .leaf-side{ width:18px; font-size:1rem; opacity:0.4; }
+  .leaf-corner{ font-size:2rem; }
+}
 
   /* ============================================================
      LAYOUT GENERAL
@@ -422,18 +466,46 @@
     z-index:5;
     overflow:hidden;
   }
-  .petal{
+    .petal{
     position:absolute;
     top:-5vh;
-    font-size:1rem;
-    color:var(--blush);
-    opacity:0.75;
-    animation-name:fall;
-    animation-timing-function:linear;
-    animation-iteration-count:infinite;
+    font-size:1.3rem;
+    opacity:0.85;
+    animation-name:fall, sway;
+    animation-timing-function:linear, ease-in-out;
+    animation-iteration-count:infinite, infinite;
     will-change:transform;
+  }
+  @keyframes sway{
+    0%,100%{ margin-left:0; }
+    50%{ margin-left:18px; }
   }
   @keyframes fall{
     0%{ transform:translate(0,0) rotate(0deg); }
     100%{ transform:translate(var(--drift), 108vh) rotate(360deg); }
   }
+
+  /* ============================================================
+   MARCO DECORATIVO CON HOJAS (estilo botánico)
+   ============================================================ */
+.leaf-frame{
+  position:relative;
+}
+.leaf-frame::before,
+.leaf-frame::after{
+  content:'🌿';
+  position:absolute;
+  font-size:2.4rem;
+  opacity:0.55;
+  pointer-events:none;
+}
+.leaf-frame::before{
+  top:0.5rem;
+  left:0.3rem;
+  transform:rotate(-25deg);
+}
+.leaf-frame::after{
+  bottom:0.5rem;
+  right:0.3rem;
+  transform:rotate(155deg);
+}
